@@ -1,0 +1,120 @@
+/* ///////////////
+   YOUR TASK: The key is making sure
+   the div are correctly nested in the HTML file.
+   ///////////////
+
+   1. At a viewport width of 32.5em
+      and bigger, .subscribe and 
+      .recent-episodes-col should go next to 
+      one another(display: flex; flex-direction: row, Make a column)
+
+  2.  They should both be equal in width
+      until .subscribe (max-width: 25rem flex-grow: 1;)reaches a width
+      of 25rem, at which point it no longer
+      grows anymore, and .recent-episodes-col(flex-grow:1; )
+      continues to grow to take up the 
+      rest of the available space
+*/
+
+/* Initialize flex-row */
+.flex-row {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
+
+/*wrappers are flex-items */.flex-col-wrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
+
+/* set design background */
+.designs-col {
+  background-color: lavender;
+}
+
+/* set background-color of 
+subscribe-col to green */
+.subscribe-col {
+  background-color: hsl(155, 97%, 24%);
+}
+.episodes-col {
+  background: hsl(0, 0%, 90%);
+}
+
+.episodes-col > * {
+  margin: 2rem;
+}
+
+/* NOTE: flex-container is a block-level element, It does not need to be flex, since the layout is a 2 column vertical grid */
+
+/* Adjust container sizes when width reaches 700px or higher */
+@media (min-width: 700px) {
+  /* Change the direction of flex-row, at the container level.  This will make grasscast and recent-episodes-col containers display as columns */
+  .flex-row {
+    flex-direction: row;
+    column-gap: 15px;
+    /* background-color: turquoise; */
+  }
+
+  /* Grab the first child of the flex-container */
+  .flex-container {
+    background: salmon;
+  }
+
+  /* Ensure that flex-containers direct children will always have equal width.
+    Whatever their number */
+  /* .flex-row > * {
+    width: 100%;
+  } */
+
+  /* Width of the item must be placed at the column level. */
+  /* .flex-col {
+    width: 100%;
+  } */
+
+  /* Wrapper around flexbox items: Place flex grow on flex-col-wrapper
+   wrapping flex items */
+  .flex-col-wrapper {
+    display: flex;
+    /* flex-grow: 1; */
+    background-color: aquamarine;
+  }
+
+  /* NOTE: Subscribe and Designs must grow, together, so the wrapper, and the subscribe and design elements must also contain flex-grow of one.*/  /*Genera: flex-grow and max-width are flex-item properties, max-width, stops flex-grow at a certain width*/
+  .designs-col {
+    max-width: 15rem;
+    flex-grow: 1;
+    background-color: pink;
+  }
+
+  /* NOTE: Subscribe and Designs must grow, together, so the wrapper, and the subscribe and design elements must also contain flex-grow of one.*/ 
+  /* General: Grab the subscribe-col,
+  and change color to orange*/
+  .subscribe-col {
+    max-width: 18rem;
+    flex-grow: 1;
+    background-color: orange;
+  }
+
+  /*Grab the second flex-col
+  flex-grow is a flex-item property, but since its on flex-col-wrapper it doesn't have to be on the item */
+  .episodes-col {
+    /* flex-direction: row; */
+    color: blue;
+    background-color: yellow;
+    /* flex-grow: 1; */
+    padding: 32px;
+  }
+}
+
+/* .episodes-col {
+  container-type: block-size;
+} */
+/* when height reaches 700px or higher*/
+/* @container (min-height: 700px) {
+  .episodes-col {
+    background-color: red;
+  }
+} */
